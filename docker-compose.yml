@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      URL_POKEAPI: "https://pokeapi.co/api/v2/pokemon/"
+      ARQUIVO: "times_salvos.json"
+    
+    restart: always
+    command: ["uvicorn", "api_pokemon:app", "--host", "0.0.0.0", "--port", "8000"]
